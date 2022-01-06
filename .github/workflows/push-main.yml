@@ -8,7 +8,7 @@ jobs:
   call-reusable:
     uses: autopp/reusable-workflow-example/.github/workflows/send-slack.yml@main
     with:
-      caller: ${{ github.job }}
+      caller: call-reusable
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   inplace:
