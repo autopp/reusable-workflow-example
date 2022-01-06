@@ -14,7 +14,8 @@ jobs:
   send-slack-job:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      JOB_NAME: ${{ inputs.caller }} / send-slack-job
+      # JOB_NAME: ${{ inputs.caller }} / send-slack-job
+      JOB_NAME: "call-reusable / send-slack-job"
     runs-on: ubuntu-latest
     steps:
       - name: Greet
