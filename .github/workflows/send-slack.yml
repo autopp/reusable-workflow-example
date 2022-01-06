@@ -23,6 +23,7 @@ jobs:
           fields: repo,took,workflow,job,ref,message
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          JOB_NAME: send-slack-job
   hello:
     runs-on: ubuntu-latest
     steps:
