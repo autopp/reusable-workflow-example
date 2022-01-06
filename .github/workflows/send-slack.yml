@@ -25,6 +25,7 @@ jobs:
         with:
           status: ${{ job.status }}
           fields: repo,took,workflow,job,ref,message
+          job_name: ${{ inputs.caller }} / send-slack-job
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   hello:
