@@ -1,19 +1,19 @@
-name: send-slack
+name: main
 
 on:
-  workflow_call:
-    secrets:
-      SLACK_WEBHOOK_URL:
-        required: true
+  push:
+    branches: ['main']
 
 jobs:
-  send-slack:
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  call-reusable:
+    uses: autopp/reusable-workflow-example/.github/workflows/send-slack.yml@main
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  inplace:
     runs-on: ubuntu-latest
     steps:
       - name: Greet
-        run: 'echo send-slack job'
+        run: 'echo inplace job'
       - name: Notify to Slack
         uses: 8398a7/action-slack@v3
         with:
