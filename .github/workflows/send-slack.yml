@@ -23,3 +23,8 @@ jobs:
           fields: repo,took,workflow,job,ref,message
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Hello'
+        run: 'echo Hello'
