@@ -1,4 +1,4 @@
-name: send-slack
+name: send-slack-yml
 
 on:
   workflow_call:
@@ -7,7 +7,7 @@ on:
         required: true
 
 jobs:
-  send-slack:
+  send-slack-job:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
