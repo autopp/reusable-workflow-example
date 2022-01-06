@@ -2,6 +2,10 @@ name: send-slack-yml
 
 on:
   workflow_call:
+    inputs:
+      caller:
+        type: string
+        required: true
     secrets:
       SLACK_WEBHOOK_URL:
         required: true
@@ -10,12 +14,11 @@ jobs:
   send-slack-job:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      JOB_NAME: ${{ inputs.caller }} / send-slack-job
     runs-on: ubuntu-latest
     steps:
       - name: Greet
         run: 'echo send-slack job $JOB_NAME'
-        env:
-          JOB_NAME: '${{ github.job }}'
       - name: Notify to Slack
         uses: 8398a7/action-slack@v3
         with:
@@ -23,7 +26,6 @@ jobs:
           fields: repo,took,workflow,job,ref,message
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          JOB_NAME: send-slack-job
   hello:
     runs-on: ubuntu-latest
     steps:
