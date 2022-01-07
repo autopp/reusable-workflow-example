@@ -21,11 +21,10 @@ jobs:
       - name: Greet
         run: 'echo send-slack job "$JOB_NAME"'
       - name: Notify to Slack
-        uses: 8398a7/action-slack@v3
+        uses: autopp/action-slack@test-reusable
         with:
           status: ${{ job.status }}
           fields: repo,took,workflow,job,ref,message
-          job_name: ${{ inputs.caller }} / send-slack-job
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   hello:
