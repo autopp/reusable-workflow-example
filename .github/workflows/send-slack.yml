@@ -2,10 +2,6 @@ name: send-slack-yml
 
 on:
   workflow_call:
-    inputs:
-      caller:
-        type: string
-        required: true
     secrets:
       SLACK_WEBHOOK_URL:
         required: true
